@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 import com.jcraft.jsch.Channel;
-import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import com.sds.tech.ServerResourceMonitor;
 import com.sds.tech.ui.ResourceMonitorUI;
@@ -34,9 +34,6 @@ public class CpuUsageCollector implements Runnable {
 
 	/** The session. */
 	private Session session;
-
-	/** The channel. */
-	private Channel channel;
 
 	/** The seq. */
 	private int seq;
@@ -76,7 +73,11 @@ public class CpuUsageCollector implements Runnable {
 
 		seq = 1;
 
-		executeCommand();
+		try {
+			executeCommand();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		message.delete(0, message.length());
 		message.append(serverName).append("'s CPU usage monitoring stop.");
@@ -85,17 +86,16 @@ public class CpuUsageCollector implements Runnable {
 
 	/**
 	 * Execute command.
+	 * 
+	 * @throws IOException
 	 */
-	public void executeCommand() {
+	public void executeCommand() throws IOException {
+		Channel channel = null;
 		String buffer = null;
 		BufferedReader br = null;
 
 		try {
-			channel = session.openChannel("exec");
-			((ChannelExec) channel).setCommand(CPU_USAGE_COMMAND);
-
-			channel.setInputStream(null);
-			((ChannelExec) channel).setErrStream(System.err);
+			channel = ConnectionUtil.getChannel(session, CPU_USAGE_COMMAND);
 
 			br = new BufferedReader(new InputStreamReader(
 					channel.getInputStream()));
@@ -122,15 +122,15 @@ public class CpuUsageCollector implements Runnable {
 			}
 
 			channel.disconnect();
-		} catch (Exception e) {
+		} catch (JSchException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				if (br != null) {
-					br.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
+			if (br != null) {
+				br.close();
 			}
 		}
 	}

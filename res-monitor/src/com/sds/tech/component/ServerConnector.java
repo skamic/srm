@@ -1,8 +1,6 @@
 package com.sds.tech.component;
 
-import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
-import com.jcraft.jsch.UserInfo;
 import com.sds.tech.ServerResourceMonitor;
 
 public class ServerConnector {
@@ -15,7 +13,6 @@ public class ServerConnector {
 	private String osType;
 
 	private ServerResourceMonitor srm;
-	private JSch sch;
 	private Session session;
 	private CpuUsageCollector cpuUsageCollector;
 	private MemoryUsageCollector memoryUsageCollector;
@@ -28,7 +25,7 @@ public class ServerConnector {
 	private static final String OS_TYPE_COMMAND = "uname";
 
 	public ServerConnector() {
-		sch = new JSch();
+
 	}
 
 	public ServerConnector(String serverName, String serverIP,
@@ -137,58 +134,22 @@ public class ServerConnector {
 		this.srm = srm;
 	}
 
-	public JSch getSch() {
-		return sch;
-	}
-
-	public void setSch(JSch sch) {
-		this.sch = sch;
-	}
-
 	public void startMonitoring() {
 		StringBuffer message = new StringBuffer();
 
 		try {
-			session = sch.getSession(userId, serverIP, serverPort);
-			session.setUserInfo(new UserInfo() {
-				@Override
-				public void showMessage(String arg0) {
-
-				}
-
-				@Override
-				public boolean promptYesNo(String arg0) {
-					return true;
-				}
-
-				@Override
-				public boolean promptPassword(String arg0) {
-					return true;
-				}
-
-				@Override
-				public boolean promptPassphrase(String arg0) {
-					return true;
-				}
-
-				@Override
-				public String getPassword() {
-					return userPw;
-				}
-
-				@Override
-				public String getPassphrase() {
-					return null;
-				}
-			});
+			session = ConnectionUtil.getSession(serverIP, serverPort, userId,
+					userPw);
 
 			session.connect();
-			
+
 			message.append(serverIP).append(":").append(serverPort)
 					.append(" connected.");
 			getSrm().getMainUI().displayMessage(message.toString());
 
-			osType = CommandExecutor.execute(session, OS_TYPE_COMMAND);
+			if (osType == null) {
+				checkOsType();
+			}
 
 			cpuUsageCollector = new CpuUsageCollector(this);
 			memoryUsageCollector = new MemoryUsageCollector(this);
@@ -203,6 +164,10 @@ public class ServerConnector {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void checkOsType() {
+		osType = ConnectionUtil.execute(session, OS_TYPE_COMMAND);
 	}
 
 	public void stopMonitoring() {

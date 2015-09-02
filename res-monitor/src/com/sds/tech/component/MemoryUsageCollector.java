@@ -80,7 +80,7 @@ public class MemoryUsageCollector implements Runnable {
 			memFreeFactor = 8 / 1024;
 		}
 
-		memTotal = Long.parseLong(CommandExecutor.execute(session,
+		memTotal = Long.parseLong(ConnectionUtil.execute(session,
 				memTotalCommand));
 		checkCurrentMemoryUsage(memFreeCommand, memTotal, memFreeFactor);
 
@@ -98,7 +98,7 @@ public class MemoryUsageCollector implements Runnable {
 		while (srm.isStarted()) {
 			startTime = System.currentTimeMillis();
 
-			memFree = Long.parseLong(CommandExecutor.execute(session,
+			memFree = Long.parseLong(ConnectionUtil.execute(session,
 					MEM_FREE_COMMAND));
 			percent = Math
 					.round(((memTotal - memFree * memFreeFactor) / memTotal) * 100);
