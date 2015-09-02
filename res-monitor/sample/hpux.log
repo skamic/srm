@@ -1,0 +1,5 @@
+2015년5월21일 (목), 오전 1시1분33초
+HP-UX gtripws1 B.11.31 U ia64 2229360965 무제한-사용자 라이센스
+         procs           memory                   page                              faults       cpu
+    r     b     w      avm    free   re   at    pi   po    fr   de    sr     in     sy    cs  us sy id
+    3     0     0   358093  209786    0    0     0    0     0    0     0   1043  15027  1595   2  0 98

@@ -1,0 +1,5 @@
+Thu Jun 18 21:22:22 KST 2015
+Linux KRLXP654.na.intranet.msd 2.6.32-358.14.1.el6.x86_64 #1 SMP Mon Jun 17 15:54:20 EDT 2013 x86_64 x86_64 x86_64 GNU/Linux
+procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 0  0      0 13819436 282372 847192    0    0     0     1    4    7  0  0 100  0  0	

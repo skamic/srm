@@ -1,0 +1,9 @@
+Wed Jul  1 21:27:17 KST 2015
+AIX swsgcpa2 1 6 00F8F56A4C00
+
+System configuration: lcpu=12 mem=92160MB
+
+kthr    memory              page              faults        cpu    
+----- ----------- ------------------------ ------------ -----------
+ r  b   avm   fre  re  pi  po  fr   sr  cy  in   sy  cs us sy id wa
+ 2  0 13461766 27325   0   0   0   0    0   0 168 16193 11410 24  2 74  0
