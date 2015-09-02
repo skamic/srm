@@ -1,4 +1,4 @@
-package com.sds.tech.component;
+package com.sds.tech.core;
 
 import java.io.BufferedWriter;
 import java.io.File;

@@ -5,9 +5,9 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sds.tech.component.DataAccessManager;
-import com.sds.tech.component.ServerConnector;
-import com.sds.tech.component.ServerManager;
+import com.sds.tech.core.DataAccessManager;
+import com.sds.tech.core.ServerConnector;
+import com.sds.tech.core.ServerManager;
 
 public class DataAccessManagerTest {
 	private ServerResourceMonitor srm;

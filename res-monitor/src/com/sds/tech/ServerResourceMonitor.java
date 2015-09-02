@@ -12,10 +12,10 @@ import java.util.StringTokenizer;
 
 import javax.swing.JFrame;
 
-import com.sds.tech.component.DataAccessManager;
-import com.sds.tech.component.GraphManager;
-import com.sds.tech.component.ServerConnector;
-import com.sds.tech.component.ServerManager;
+import com.sds.tech.core.DataAccessManager;
+import com.sds.tech.core.GraphManager;
+import com.sds.tech.core.ServerConnector;
+import com.sds.tech.core.ServerManager;
 import com.sds.tech.ui.ResourceMonitorUI;
 
 

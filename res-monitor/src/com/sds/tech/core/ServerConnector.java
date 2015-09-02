@@ -1,7 +1,8 @@
-package com.sds.tech.component;
+package com.sds.tech.core;
 
 import com.jcraft.jsch.Session;
 import com.sds.tech.ServerResourceMonitor;
+import com.sds.tech.util.ConnectionUtil;
 
 public class ServerConnector {
 	private String serverId;

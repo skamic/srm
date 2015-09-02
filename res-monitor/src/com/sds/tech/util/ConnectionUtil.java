@@ -1,4 +1,4 @@
-package com.sds.tech.component;
+package com.sds.tech.util;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

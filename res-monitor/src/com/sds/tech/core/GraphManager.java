@@ -1,4 +1,4 @@
-package com.sds.tech.component;
+package com.sds.tech.core;
 
 import java.awt.Component;
 import java.awt.Graphics2D;

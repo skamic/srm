@@ -1,7 +1,8 @@
-package com.sds.tech.component;
+package com.sds.tech.core;
 
 import com.jcraft.jsch.Session;
 import com.sds.tech.ServerResourceMonitor;
+import com.sds.tech.util.ConnectionUtil;
 
 public class MemoryUsageCollector implements Runnable {
 	private static final String LINUX_MEM_TOTAL_COMMAND = "free | grep ^Mem | gawk '{print $2}'";

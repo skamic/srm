@@ -1,4 +1,4 @@
-package com.sds.tech.component;
+package com.sds.tech.core;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,6 +10,7 @@ import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import com.sds.tech.ServerResourceMonitor;
 import com.sds.tech.ui.ResourceMonitorUI;
+import com.sds.tech.util.ConnectionUtil;
 
 // TODO: Auto-generated Javadoc
 /**

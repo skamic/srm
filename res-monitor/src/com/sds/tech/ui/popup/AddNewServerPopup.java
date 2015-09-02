@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 
 import net.miginfocom.swing.MigLayout;
 
-import com.sds.tech.component.ServerConnector;
+import com.sds.tech.core.ServerConnector;
 import com.sds.tech.ui.ResourceMonitorUI;
 
 public class AddNewServerPopup extends JFrame {

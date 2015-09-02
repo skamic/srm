@@ -35,9 +35,9 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.time.TimeSeriesCollection;
 
 import com.sds.tech.ServerResourceMonitor;
-import com.sds.tech.component.DataAccessManager;
-import com.sds.tech.component.GraphManager;
-import com.sds.tech.component.ServerConnector;
+import com.sds.tech.core.DataAccessManager;
+import com.sds.tech.core.GraphManager;
+import com.sds.tech.core.ServerConnector;
 import com.sds.tech.ui.popup.AddNewServerPopup;
 import com.sds.tech.ui.popup.ResultSettingsPopup;
 

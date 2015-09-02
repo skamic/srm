@@ -3,8 +3,8 @@ package com.sds.tech;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sds.tech.component.CpuUsageCollector;
-import com.sds.tech.component.ServerConnector;
+import com.sds.tech.core.CpuUsageCollector;
+import com.sds.tech.core.ServerConnector;
 
 public class ResourceCollectorTest {
 	private ServerResourceMonitor srm;
